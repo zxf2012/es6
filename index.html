@@ -95,6 +95,138 @@
     console.log([1, 5, 10, 15].find(function (value, index, arr) {
         return value > 9;
     }));
+
+    console.log([1,2,3].fill(7));
+    console.log(['a', 'b', 'c'].fill(7, 1, 2));
+
+    for(let index of ['a', 'b'].keys()) {
+        console.log(index);
+    }
+    for(let index of ['a', 'b'].values()) {
+        console.log(index);
+    }
+    for(let [index, elem] of ['a', 'b'].entries()) {
+        console.log(index, elem);
+    }
+
+    console.log(+0 === -0);
+    console.log(NaN === NaN);
+
+    console.log(Object.is(+0, -0));
+    console.log(Object.is(NaN, NaN));
+
+    (function() {
+        var target = {a: 1};
+        var source1 = {b: 2};
+        var source2 = {c: 3};
+        console.log(Object.assign(target, source1, source2));
+    })();
+
+    (function() {
+        var target = {a: 1, b: 1};
+        var source1 = {b: 2, c: 2};
+        var source2 = {c: 3};
+        console.log(Object.assign(target, source1, source2));
+    })();
+
+    var o = Object.setPrototypeOf({}, null);
+    console.log(o);
+
+/*    var Person = {
+        name: 'eric/zhang',
+        birth,
+        hello() {
+            console.log('my name is', this.name);
+        }
+    };
+    console.log(new Person);*/
+
+    var lastWord = 'last word';
+    var a = {
+        'first word': 'hello',
+        [lastWord]: 'world'
+    };
+    console.log(a['first word']);
+    console.log(a[lastWord]);
+    console.log(a['last word']);
+
+    var mySymbol = Symbol('Test');
+    console.log(mySymbol.name, typeof mySymbol);
+
+/*    var proxy = new Proxy({}, {
+        get: function (target, property) {
+            return 35;
+        }
+    });
+    console.log(proxy.time);
+    console.log(proxy.name);*/
+
+/*    var o = {};
+    function observer(changes) {
+        changes.forEach(function(change) {
+            console.log('发生变动的属性:' + change.name);
+            console.log('变动前的值:' + change.oldValue);
+            console.log('变动后的值:' + change.object[change.name]);
+            console.log('变动类型:' + change.type);
+        });
+    }
+    Object.observer(o, observer);
+    a.name = 'eric/zhang';*/
+    function Point(x = 0, y = 0) {
+        this.x = x;
+        this.y = y;
+    }
+    var p = new Point();
+    console.log(p);
+
+/*    function throwIfMissing() {
+        throw new Error('Missing parameter');
+    }
+
+    function foo(mustBeProvided = throwIfMissing()) {
+        return mustBeProvided;
+    }
+    foo();*/
+
+    function add(...values) {
+        let sum = 0;
+        for(var val of values) {
+            sum += val;
+        }
+        return sum;
+    }
+
+    console.log(add(2, 5, 3));
+
+    function add(x, y) {
+        return x + y;
+    }
+    var numbers = [8, 88];
+    console.log(add(...numbers));
+
+    var a = [1];
+    var b = [2, 3, 4];
+    var c = [6, 7];
+    var d = [0,...a, ...b, 5, ...c];
+    console.log(d);
+
+    var sum = (num1, num2) => num1 + num2;
+    console.log(sum(8, 8));
+
+    var s = new Set();
+
+    [2, 3, 5, 4, 5, 2, 3].map(x => s.add(x));
+    console.log(s);
+
+    function dedupe(array) {
+        return Array.from(new Set(array));
+    }
+    console.log(dedupe([1, 2, 3, 2]));
+
+/*    var map = new Map(['name', '张三'], ['title', 'Author']);
+    console.log(map);*/
+
+
 </script>
 </body>
 </html>
